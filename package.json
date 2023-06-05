@@ -1,22 +1,17 @@
 {
   "name": "discord-bot",
   "version": "1.0.0",
-  "type": "module",
-  "description": "Discord bot for fun purposes",
-  "main": "src/index.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "CRGuarda",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^14.11.0",
-    "dotenv": "^16.1.3",
-    "sqlite3": "^5.1.6"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.22"
+    "dotenv": "^16.1.4",
+    "node-cron": "^3.0.2"
   }
 }
