@@ -13,7 +13,7 @@ async function go() {
 client.on('ready', () => {
     console.log(`Bot ${client.user.tag} online!`);
     cron.schedule('00 17 * * *', () => {go();});
-    cron.schedule('00 24 * * *', () => {go();});
+    cron.schedule('00 01 * * *', () => {go();});
 });
 
 client.login(process.env.DISCORD_TOKEN);
