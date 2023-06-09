@@ -18,7 +18,6 @@ async function go() {
   
 client.on('ready', () => {
     console.log(`Bot ${client.user.tag} online!`);
-    go();
     cron.schedule('00 13 * * *', () => {go();});
     cron.schedule('00 18 * * *', () => {go();});
     cron.schedule('00 23 * * *', () => {go();});
