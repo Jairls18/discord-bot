@@ -15,3 +15,9 @@ client.on('ready', () => {
 });
 
 client.login(process.env.DISCORD_TOKEN);
+
+
+// DAZS     181991306749411328
+// GUARDA   236175198410375168
+// JAIR     484958867864944641
+// SEBAS    562417509135810561
