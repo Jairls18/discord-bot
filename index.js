@@ -43,8 +43,6 @@ async function go() {
   
 client.on('ready', () => {
     console.log(`Bot ${client.user.tag} online!`);
-    go();
-    setInterval(go, 5000);
     cron.schedule('00 5 * * *', () => {clean();});
     cron.schedule('00 13 * * *', () => {go();});
     cron.schedule('00 18 * * *', () => {go();});
