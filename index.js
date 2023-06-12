@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { Client, GatewayIntentBits } = require('discord.js');
 const cron = require('node-cron');
-const check_list = {};
+let check_list = {};
 
 const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions]});
 
@@ -63,6 +63,7 @@ client.on('messageReactionAdd', (reaction, user) => {
         }
         if (reaction.emoji.name == '❌'){
             canal.send(`🤬 🤬 🤬 ${name} es FALLA csm. 🤬 🤬 🤬`);
+            check_list[user.id] = true;
         }
         if (reaction.emoji.name == '🤔'){
             canal.send(`🙄 🙄 🙄 ${name} apura oe. 🙄 🙄 🙄`);
