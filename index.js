@@ -55,19 +55,27 @@ client.on('messageReactionAdd', (reaction, user) => {
     
     const canal = client.channels.cache.get(process.env.CHANNEL_ID); // 👦best-friends
     const name  = user.username;
+    const id  = user.id;
 
     if (name != 'Botin'){
-        if (reaction.emoji.name == '✅'){
+
+        if (id == '181991306749411328'){
             canal.send(`🥳 🥳 🥳 ${name} ha confirmado GO! 🥳 🥳 🥳`);
             check_list[user.id] = true;
+        } else {
+            if (reaction.emoji.name == '✅'){
+                canal.send(`🥳 🥳 🥳 ${name} ha confirmado GO! 🥳 🥳 🥳`);
+                check_list[user.id] = true;
+            }
+            if (reaction.emoji.name == '❌'){
+                canal.send(`🤬 🤬 🤬 ${name} es FALLA csm. 🤬 🤬 🤬`);
+                check_list[user.id] = true;
+            }
+            if (reaction.emoji.name == '🤔'){
+                canal.send(`🙄 🙄 🙄 ${name} apura oe. 🙄 🙄 🙄`);
+            }
         }
-        if (reaction.emoji.name == '❌'){
-            canal.send(`🤬 🤬 🤬 ${name} es FALLA csm. 🤬 🤬 🤬`);
-            check_list[user.id] = true;
-        }
-        if (reaction.emoji.name == '🤔'){
-            canal.send(`🙄 🙄 🙄 ${name} apura oe. 🙄 🙄 🙄`);
-        }
+
     }
 
   });
