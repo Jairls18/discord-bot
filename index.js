@@ -40,9 +40,18 @@ async function go() {
     }
 
 }
+
+async function volvi() {
+
+    const canal = client.channels.cache.get(process.env.CHANNEL_ID); // 👦best-friends
+
+    await canal.send(`Ya volví perros, me extrañaron? 😎`);
+
+}
   
 client.on('ready', () => {
     console.log(`Bot ${client.user.tag} online!`);
+    volvi();
     cron.schedule('00 5 * * *', () => {clean();});
     cron.schedule('00 13 * * *', () => {go();});
     cron.schedule('00 18 * * *', () => {go();});
@@ -59,7 +68,7 @@ client.on('messageReactionAdd', (reaction, user) => {
 
     if (name != 'Botin'){
 
-        if (id == '181991306749411328'){
+        if (id == '1819913067494113280'){
             canal.send(`🥳 🥳 🥳 ${name} ha confirmado GO! 🥳 🥳 🥳`);
             check_list[user.id] = true;
         } else {
