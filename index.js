@@ -1,9 +1,15 @@
 require('dotenv').config();
 const { Client, GatewayIntentBits } = require('discord.js');
 const cron = require('node-cron');
+const Discord = require('discord.js')
+
 let check_list = {};
 
-const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions]});
+const client = new Client({intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildMessageReactions]});
 
 async function clean() {
     check_list = {};
@@ -52,6 +58,7 @@ async function volvi() {
 client.on('ready', () => {
     console.log(`Bot ${client.user.tag} online!`);
     volvi();
+    go();
     cron.schedule('00 5 * * *', () => {clean();});
     cron.schedule('00 13 * * *', () => {go();});
     cron.schedule('00 18 * * *', () => {go();});
@@ -88,5 +95,24 @@ client.on('messageReactionAdd', (reaction, user) => {
     }
 
   });
+
+
+
+  client.on('messageCreate', async (message) => {
+
+    console.log(message);
+
+    if (message.content.toLowerCase().includes('calamardo')) {
+
+        await message.delete();
+        
+        const imageUrl = 'https://arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/DRBGFCD22JEPPDHOHOD4L4QM5E.jpg';
+        const canal = client.channels.cache.get(process.env.CHANNEL_ID);
+        
+        canal.send({ files: [imageUrl] });
+    
+    }
+
+});
 
 client.login(process.env.DISCORD_TOKEN);
