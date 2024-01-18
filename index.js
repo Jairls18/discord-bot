@@ -60,7 +60,7 @@ client.on('ready', () => {
 
 client.on('messageReactionAdd', (reaction, user) => {
 
-    console.log(user);
+    console.log(reaction, user);
     
     const canal = client.channels.cache.get(process.env.CHANNEL_ID); // 👦best-friends
     const name  = user.username;
@@ -91,6 +91,8 @@ client.on('messageReactionAdd', (reaction, user) => {
 
 
   client.on('message', (message) => {
+
+    console.log(message);
 
     if (message.content.toLowerCase().includes('calamardo')) {
 
