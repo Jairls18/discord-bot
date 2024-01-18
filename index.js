@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, GatewayIntentBits, MessageAttachment} = require('discord.js');
 const cron = require('node-cron');
 let check_list = {};
 
@@ -88,5 +88,25 @@ client.on('messageReactionAdd', (reaction, user) => {
     }
 
   });
+
+
+  client.on('message', (message) => {
+
+    if (message.content.toLowerCase().includes('calamardo')) {
+
+        message.delete()
+        .then(() => console.log('Mensaje eliminado'))
+        .catch((error) => console.error('Error al eliminar el mensaje:', error));
+
+        const imageBuffer = fs.readFileSync('https://arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/DRBGFCD22JEPPDHOHOD4L4QM5E.jpg'); // Reemplaza con la ruta de tu imagen
+        const attachment = new MessageAttachment(imageBuffer, 'calamardo.jpg');
+
+        message.channel.send(attachment)
+        .then(sentImage => console.log('Imagen enviada correctamente'))
+        .catch((error) => console.error('Error al enviar la imagen:', error));
+    
+    }
+
+});
 
 client.login(process.env.DISCORD_TOKEN);
