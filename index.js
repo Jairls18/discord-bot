@@ -34,7 +34,7 @@ async function go() {
         let list_id = ''
 
         if (!('484958867864944641' in check_list)) list_id = list_id + `<@${'484958867864944641'}> `
-        if (!('181991306749411328' in check_list)) list_id = list_id + `<@${'181991306749411328'}> `
+        //if (!('181991306749411328' in check_list)) list_id = list_id + `<@${'181991306749411328'}> `
         if (!('236175198410375168' in check_list)) list_id = list_id + `<@${'236175198410375168'}> `
 
         if (list_id != ''){
@@ -57,7 +57,7 @@ async function volvi() {
   
 client.on('ready', () => {
     console.log(`Bot ${client.user.tag} online!`);
-    volvi();
+    //volvi();
     go();
     cron.schedule('00 5 * * *', () => {clean();});
     cron.schedule('00 13 * * *', () => {go();});
@@ -74,6 +74,8 @@ client.on('messageReactionAdd', (reaction, user) => {
     const id  = user.id;
 
     if (name != 'Botin'){
+
+        if (id == '181991306749411328') return;
 
         if (id == '1819913067494113280'){
             canal.send(`🥳 🥳 🥳 ${name} ha confirmado GO! 🥳 🥳 🥳`);
@@ -112,6 +114,10 @@ client.on('messageReactionAdd', (reaction, user) => {
         canal.send({ files: [imageUrl] });
     
     }
+
+    const id  = message.author.id;
+
+    if (id == '181991306749411328') await message.delete();
 
 });
 
