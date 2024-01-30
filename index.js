@@ -110,7 +110,9 @@ client.on('messageReactionAdd', (reaction, user) => {
         const imageUrl = 'https://arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/DRBGFCD22JEPPDHOHOD4L4QM5E.jpg';
         const canal = client.channels.cache.get(process.env.CHANNEL_ID);
         
-        canal.send({ files: [imageUrl] });
+        let list_id = `<@${'181991306749411328'}> `;
+        await canal.send(`${list_id}`);
+        await canal.send({ files: [imageUrl] });
     
     }
 
